@@ -18,6 +18,15 @@ public class ArrayUtilTest {
 		assertArrayEquals(expected, result);
 
 	}
+	
+	@Test
+	public void testSwap() {
+		int [] arr = {1, 4, 5};
+		int [] expected = {1, 5, 4};
+		ArrayUtil.swap(arr, 1, 2);
+		
+		assertArrayEquals(expected, arr);
+	}
 
 	
 }
