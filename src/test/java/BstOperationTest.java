@@ -8,18 +8,18 @@ import com.andrearota.datastructure.bst.BinaryTreeNode;
 
 public class BstOperationTest {
 
+	protected BinaryTreeNode root = new BinaryTreeNode(10);
+	protected BinaryTreeNode a = new BinaryTreeNode(5);
+	protected BinaryTreeNode b = new BinaryTreeNode(7);
+	protected BinaryTreeNode c = new BinaryTreeNode(2);
+	protected BinaryTreeNode d = new BinaryTreeNode(45);
+	
 	protected BinaryTreeNode generateTree() {
 		
-		
+		// Topology:
 		//   10
 		//	5  45
 		// 2 7
-		
-		BinaryTreeNode root = new BinaryTreeNode(10);
-		BinaryTreeNode a = new BinaryTreeNode(5);
-		BinaryTreeNode b = new BinaryTreeNode(7);
-		BinaryTreeNode c = new BinaryTreeNode(2);
-		BinaryTreeNode d = new BinaryTreeNode(45);
 		
 		root.setLeft(a);
 		root.setRight(d);
@@ -33,27 +33,27 @@ public class BstOperationTest {
 	@Test
 	public void searchSuccess() {
 		BinaryTreeNode tree = generateTree();
-		assertEquals(true, BST.search(tree, 7));
+		assertEquals(b, BST.search(tree, 7));
 	}
 	
 	@Test
 	public void searchNoSuccess() {
 		BinaryTreeNode tree = generateTree();
-		assertEquals(false, BST.search(tree, 3));
+		assertEquals(null, BST.search(tree, 3));
 	}
 	
 	@Test
 	public void insertionExistentElement() {
 		BinaryTreeNode tree = generateTree();
 		assertEquals(false, BST.insert(tree, 2));
-		assertEquals(true, BST.search(tree, 2));
+		assertEquals(c, BST.search(tree, 2));
 	}
 
 	@Test
 	public void insertionNonExistentElement() {
 		BinaryTreeNode tree = generateTree();
 		assertEquals(true, BST.insert(tree, 3));
-		assertEquals(true, BST.search(tree, 3));
+		assertNotNull(BST.search(tree, 3));
 	}
 	
 }

@@ -2,10 +2,10 @@ package com.andrearota.datastructure.bst;
 
 public class BST {
 
-	public static boolean search(BinaryTreeNode tree, int n) {
+	public static BinaryTreeNode search(BinaryTreeNode tree, int n) {
 
 		if (tree == null) {
-			return false;
+			return null;
 		} else {
 			
 			int value = tree.getValue();
@@ -15,7 +15,7 @@ public class BST {
 			} else if (value > n) {
 				return BST.search(tree.getLeft(), n);
 			} else {
-				return true;
+				return tree;
 			}
 		}
 
@@ -50,6 +50,29 @@ public class BST {
 			} else {
 				return false;
 			}
+		
+	}
+	
+	public void delete(BinaryTreeNode tree, int key) {
+		
+		BinaryTreeNode toDelete = BST.search(tree, key);
+		
+		if(toDelete != null) {
+			
+			if(toDelete.getLeft() == null && toDelete.getRight() == null) {
+				// Leaf
+				return;
+			} else if(toDelete.getLeft() == null ^ toDelete.getRight() == null) {
+				// Single child
+				return;
+			} else {
+				
+			}
+			
+			
+			
+			
+		}
 		
 	}
 
