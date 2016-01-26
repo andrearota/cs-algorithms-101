@@ -45,7 +45,7 @@ public class SeparateChainingHashTable implements HashTable {
 		}
 	}
 	
-	@Override
+	
 	public void put(int k, String v) {
 		Pair p = new Pair(k, v);
 		List<Pair> chain = getChainedList(k);
@@ -61,7 +61,7 @@ public class SeparateChainingHashTable implements HashTable {
 		return k%SIZE;
 	}
 
-	@Override
+	
 	public String get(int k) {
 		
 		List<Pair> chain = getChainedList(k);
@@ -75,7 +75,7 @@ public class SeparateChainingHashTable implements HashTable {
 		return null;
 	}
 	
-	@Override
+	
 	public int size() {
 		
 		int result = 0;
@@ -86,7 +86,7 @@ public class SeparateChainingHashTable implements HashTable {
 		
 		return result;
 	}
-	@Override
+	
 	public boolean delete(int k) {
 		
 		List<Pair> chain = getChainedList(k);

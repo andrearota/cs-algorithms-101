@@ -4,7 +4,6 @@ import com.andrearota.util.ArrayUtil;
 
 public class QuickSortStrategy implements SortingStrategy {
 
-	@Override
 	public int[] sort(int[] arr) {
 		quickSort(arr, 0, arr.length-1);
 		return arr; 
