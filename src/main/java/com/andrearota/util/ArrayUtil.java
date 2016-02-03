@@ -41,4 +41,15 @@ public class ArrayUtil {
 		arr[m] = tmp;
 	}
 
+	public static int[] unboxIntArray(Object[] array) {
+
+		int[] result = new int[array.length];
+		
+		for(int i=0; i<array.length; i++) {
+			result[i] = (Integer)array[i];
+		}
+		
+		return result;
+	}
+
 }

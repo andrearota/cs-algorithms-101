@@ -6,15 +6,17 @@ public class Node {
 	private NodeColor color;
 	private Node left;
 	private Node right;
+	private Node parent;
 	
 	public Node(Integer data) {
-		this(data, NodeColor.BLACK, null, null);
+		this(data, NodeColor.BLACK, null, null, null);
 	}
 	
-	public Node(Integer data, NodeColor color, Node left, Node right) {
+	public Node(Integer data, NodeColor color, Node parent, Node left, Node right) {
 		super();
 		this.data = data;
 		this.color = color;
+		this.parent = parent;
 		this.left = left;
 		this.right = right;
 	}
@@ -54,6 +56,14 @@ public class Node {
 	@Override
 	public String toString() {
 		return ("(" + this.data + ", " + this.color + ")");
+	}
+
+	public Node getParent() {
+		return parent;
+	}
+
+	public void setParent(Node parent) {
+		this.parent = parent;
 	}
 	
 }
