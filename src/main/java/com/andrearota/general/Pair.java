@@ -23,7 +23,6 @@ public class Pair implements Comparable<Pair> {
 		this.v = v;
 	}
 
-	@Override
 	public int compareTo(Pair o) {
 		if(this.k != o.k) {
 			return this.k > o.k? 1: -1;
