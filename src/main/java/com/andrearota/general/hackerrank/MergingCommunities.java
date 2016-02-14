@@ -1,12 +1,10 @@
 package com.andrearota.general.hackerrank;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Set;
 
 public class MergingCommunities {
+	
 	
 	public static void main(String args[]) {
 
@@ -37,49 +35,39 @@ public class MergingCommunities {
 		s.close();
 	}
 
-	private List<Set<Integer>> communities = new LinkedList<Set<Integer>>();
+	private int[] array;
+	private int[] size;
 	
 	public MergingCommunities(int n) {
-		for(int i=0; i<n; i++) {
-			Set<Integer> c = new HashSet<Integer>();
-			c.add(i+1);
-			communities.add(c);
-		}
+		array = new int[n+1];
+		size = new int[n+1];
+		Arrays.fill(array, -1);
+		Arrays.fill(size, 1);
 	}
 
 	public int query(int value) {
-		
-		for(int i=0; i<communities.size(); i++) {
-			if(communities.get(i).contains(value)) {
-				return communities.get(i).size();
-			};
-		}
-		
-		return -1;
+		int x = findRepr(value);
+		return size[x];
 	}
 
 	public void meet(int i, int j) {
+		int x = findRepr(i);
+		int y = findRepr(j);
 		
-		int aIdx = 0, bIdx = 0;
-		
-		for(int l=0; l<communities.size(); l++) {
-			
-			if(communities.get(l).contains(i)) {
-				aIdx = l;
-			};
-			
-			if(communities.get(l).contains(j)) {
-				bIdx = l;
-			};
-		}
-		
-		if(aIdx != bIdx) {
-			communities.get(aIdx).addAll(communities.get(bIdx));
-			communities.remove(bIdx);
+		if(x != y) {
+			array[x] = y;
+			size[y]++;
 		}
 		
 	}
 	
-	
+	private int findRepr(int value) {
+		
+		while(array[value] != -1) {
+			value = array[value];
+		}
+		
+		return value;
+	}
 
 }
